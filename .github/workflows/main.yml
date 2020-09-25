@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: CentOS6
+    runs-on: CentOS-8.0
     steps:
 
     # 下载源码
