@@ -2,7 +2,7 @@
   <div class="home-page">
     <div class="banner">
       <div class="container">
-        <h1 class="logo-font">conduit</h1>
+        <h1 class="logo-font">tep no</h1>
         <p>A place to share your knowledge.</p>
       </div>
     </div>
@@ -16,57 +16,64 @@
                 <nuxt-link
                   class="nav-link"
                   :class="{
-                    active: tab === 'your_feed'
+                    active: tab === 'your_feed',
                   }"
                   :to="{
-                  name: 'home',
-                  query: {
-                    tab: 'your_feed',
-                  }
-                }"
+                    name: 'home',
+                    query: {
+                      tab: 'your_feed',
+                    },
+                  }"
                   exact
-                >Your Feed</nuxt-link>
+                  >Your Feed</nuxt-link
+                >
               </li>
               <li class="nav-item">
                 <nuxt-link
                   class="nav-link"
                   :class="{
-                    active: tab === 'global_feed'
+                    active: tab === 'global_feed',
                   }"
                   :to="{
-                  name: 'home',
-                }"
+                    name: 'home',
+                  }"
                   exact
-                >Global Feed</nuxt-link>
+                  >Global Feed</nuxt-link
+                >
               </li>
               <li v-if="tag" class="nav-item">
                 <nuxt-link
                   class="nav-link"
                   :class="{
-                    active: tab === 'tag'
+                    active: tab === 'tag',
                   }"
                   :to="{
-                  name: 'home',
-                  query: {
-                    tab: 'tag',
-                    tag,
-                  }
-                }"
+                    name: 'home',
+                    query: {
+                      tab: 'tag',
+                      tag,
+                    },
+                  }"
                   exact
-                ># {{ tag }}</nuxt-link>
+                  ># {{ tag }}</nuxt-link
+                >
               </li>
             </ul>
           </div>
 
-          <div v-for="article in articles" :key="article.slug" class="article-preview">
+          <div
+            v-for="article in articles"
+            :key="article.slug"
+            class="article-preview"
+          >
             <div class="article-meta">
               <nuxt-link
                 :to="{
-                name: 'profile',
-                params: {
-                  username: article.author.username
-                }
-              }"
+                  name: 'profile',
+                  params: {
+                    username: article.author.username,
+                  },
+                }"
               >
                 <img :src="article.author.image" />
               </nuxt-link>
@@ -74,19 +81,22 @@
                 <nuxt-link
                   class="author"
                   :to="{
-                name: 'profile',
-                params: {
-                  username: article.author.username
-                }
-              }"
-                >{{ article.author.username }}</nuxt-link>
-                <span class="date">{{ article.createdAt | date('MMM DD, YYYY') }}</span>
+                    name: 'profile',
+                    params: {
+                      username: article.author.username,
+                    },
+                  }"
+                  >{{ article.author.username }}</nuxt-link
+                >
+                <span class="date">{{
+                  article.createdAt | date("MMM DD, YYYY")
+                }}</span>
               </div>
               <button
                 class="btn btn-outline-primary btn-sm pull-xs-right"
                 @click="onFavorite(article)"
                 :class="{
-                  active: article.favorited
+                  active: article.favorited,
                 }"
                 :disabled="article.favoritedDisabled"
               >
@@ -99,8 +109,8 @@
               :to="{
                 name: 'article',
                 params: {
-                  slug: article.slug
-                }
+                  slug: article.slug,
+                },
               }"
             >
               <h1>{{ article.title }}</h1>
@@ -117,20 +127,21 @@
                 v-for="item in totalPage"
                 :key="item"
                 :class="{
-                active: item === page
-              }"
+                  active: item === page,
+                }"
               >
                 <nuxt-link
                   class="page-link"
                   :to="{
-                name: 'home',
-                query: {
-                  page: item,
-                  tag,
-                  tab,
-                }
-              }"
-                >{{item}}</nuxt-link>
+                    name: 'home',
+                    query: {
+                      page: item,
+                      tag,
+                      tab,
+                    },
+                  }"
+                  >{{ item }}</nuxt-link
+                >
               </li>
             </ul>
           </nav>
@@ -147,13 +158,14 @@
                 :key="item"
                 class="tag-pill tag-default"
                 :to="{
-                name: 'home',
-                query: {
-                  tab: 'tag',
-                  tag: item
-                }
-              }"
-              >{{item}}</nuxt-link>
+                  name: 'home',
+                  query: {
+                    tab: 'tag',
+                    tag: item,
+                  },
+                }"
+                >{{ item }}</nuxt-link
+              >
             </div>
           </div>
         </div>
