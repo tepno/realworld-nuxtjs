@@ -56,5 +56,8 @@ jobs:
           cd /root/realworld-nuxtjs
           wget https://github.com/tepno/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
+          git pull
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh         
           npm install --production
           pm2 reload pm2.config.json
